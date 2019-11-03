@@ -2,9 +2,13 @@ package pl.jaszczomb.appserverside.collection;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 @AllArgsConstructor
+@Getter
+@Setter
 public class History {
     private double dateOfPurchase;
     private String name;
@@ -13,14 +17,4 @@ public class History {
     private int price;
     private int quantity;
     private String paymentId;
-
-    public History(double dateOfPurchase, String name, String brand, String id, int price, int quantity, String paymentId) {
-        this.dateOfPurchase = dateOfPurchase;
-        this.name = name;
-        this.brand = brand;
-        this.id = id;
-        this.price = price;
-        this.quantity = quantity;
-        this.paymentId = paymentId;
-    }
 }

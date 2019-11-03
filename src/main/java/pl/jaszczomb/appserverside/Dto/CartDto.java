@@ -1,18 +1,15 @@
-package pl.jaszczomb.appserverside.collection;
+package pl.jaszczomb.appserverside.Dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
-@AllArgsConstructor
 @Getter
 @Setter
-public class Cart {
-
-    private String id;
-
+@AllArgsConstructor
+@NoArgsConstructor
+public class CartDto {
     private int quantity;
     private double date;
 }

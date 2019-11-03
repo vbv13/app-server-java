@@ -5,14 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PaymentDto {
-    private List<UserOnPaymentDto> userOnPayment;
-    private List<DetailDto> detail;
-    private List<ProductOnPaymentDto> productOnPayment;
+public class ImageDto {
+    private String public_id;
+    private String url;
 }

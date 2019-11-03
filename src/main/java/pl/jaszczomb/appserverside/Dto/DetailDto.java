@@ -1,22 +1,21 @@
-package pl.jaszczomb.appserverside.collection;
+package pl.jaszczomb.appserverside.Dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
-@AllArgsConstructor
 @Getter
 @Setter
-public class Detail {
-
+@AllArgsConstructor
+@NoArgsConstructor
+public class DetailDto {
     private boolean paid;
     private boolean cancelled;
     private String payerId;
     private String paymentId;
     private String paymentToken;
     private String returnUrl;
-    private Address address;
+    private AddressDto address;
     private String email;
 }

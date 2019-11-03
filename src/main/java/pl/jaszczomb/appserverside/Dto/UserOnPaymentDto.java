@@ -1,26 +1,16 @@
 package pl.jaszczomb.appserverside.Dto;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
-
-
-    private List<CartDto> cart;
-    private List<HistoryDto> history;
-    private int role;
-    private String email;
-    private String password;
+public class UserOnPaymentDto {
     private String name;
     private String lastname;
-    private String token;
+    private String email;
 }

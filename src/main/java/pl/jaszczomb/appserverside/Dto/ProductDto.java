@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.jaszczomb.appserverside.collection.Brand;
-import pl.jaszczomb.appserverside.collection.Image;
-import pl.jaszczomb.appserverside.collection.Sort;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -17,16 +15,16 @@ import java.util.List;
 @NoArgsConstructor
 public class ProductDto {
     private int sold;
-    private List<Image> image;
+    private List<ImageDto> image;
     private String name;
     private String description;
     private int price;
-    private Brand brand;
+    private BrandDto brand;
     private boolean shipping;
     private boolean available;
-    private Sort sort;
+    private SortDto sort;
     private int size;
     private boolean publish;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private Date createdAt;
+    private Date updatedAt;
 }

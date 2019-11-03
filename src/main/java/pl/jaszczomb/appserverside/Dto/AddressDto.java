@@ -1,16 +1,15 @@
-package pl.jaszczomb.appserverside.collection;
+package pl.jaszczomb.appserverside.Dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
-@AllArgsConstructor
 @Getter
 @Setter
-public class Address {
-
+@AllArgsConstructor
+@NoArgsConstructor
+public class AddressDto {
     private String recipient_name;
     private String line1;
     private String line2;
