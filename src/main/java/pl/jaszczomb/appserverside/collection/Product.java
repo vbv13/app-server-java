@@ -1,9 +1,6 @@
 package pl.jaszczomb.appserverside.collection;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;
@@ -12,9 +9,10 @@ import java.util.List;
 
 @Document(collection = "products")
 @Data
-@AllArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
 
     @Id private String _id;

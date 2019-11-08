@@ -1,14 +1,12 @@
 package pl.jaszczomb.appserverside.collection;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Data
-@AllArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductOnPayment {
 
     private Double dateOfPurchase;
