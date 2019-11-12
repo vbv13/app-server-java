@@ -1,4 +1,4 @@
-package pl.jaszczomb.appserverside.Dto;
+package pl.jaszczomb.appserverside.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BrandDto {
+public class SortDto {
     private String name;
 }

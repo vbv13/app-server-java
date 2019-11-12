@@ -1,4 +1,4 @@
-package pl.jaszczomb.appserverside.Dto;
+package pl.jaszczomb.appserverside.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductOnPaymentDto {
-    private Double dateOfPurchase;
+public class HistoryDto {
+    private double dateOfPurchase;
     private String name;
     private String brand;
     private String id;

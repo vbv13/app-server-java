@@ -1,4 +1,4 @@
-package pl.jaszczomb.appserverside.Dto;
+package pl.jaszczomb.appserverside.dto;
 
 
 import lombok.AllArgsConstructor;

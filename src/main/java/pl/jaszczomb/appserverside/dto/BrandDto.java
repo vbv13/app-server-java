@@ -1,4 +1,4 @@
-package pl.jaszczomb.appserverside.Dto;
+package pl.jaszczomb.appserverside.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CartDto {
-    private int quantity;
-    private double date;
+public class BrandDto {
+    private String name;
 }

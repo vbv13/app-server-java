@@ -1,7 +1,7 @@
 package pl.jaszczomb.appserverside.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.jaszczomb.appserverside.Dto.UserOnPaymentDto;
+import pl.jaszczomb.appserverside.dto.UserOnPaymentDto;
 import pl.jaszczomb.appserverside.collection.UserOnPayment;
 
 

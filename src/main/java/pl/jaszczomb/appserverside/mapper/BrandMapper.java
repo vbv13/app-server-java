@@ -1,8 +1,11 @@
 package pl.jaszczomb.appserverside.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.jaszczomb.appserverside.Dto.BrandDto;
+import pl.jaszczomb.appserverside.dto.BrandDto;
 import pl.jaszczomb.appserverside.collection.Brand;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class BrandMapper {
@@ -13,5 +16,11 @@ public class BrandMapper {
 
     public Brand mapToBrand(BrandDto brandDto) {
         return new Brand();
+    }
+
+    public List<BrandDto> mapToBrandDtoList(List<Brand> brands) {
+        return brands.stream()
+                .map(this::mapToBrandDto)       //wskazanie referencji do metody mapToDietDto
+                .collect(Collectors.toList());   //tworzy kolekcję w postaci listy
     }
 }
