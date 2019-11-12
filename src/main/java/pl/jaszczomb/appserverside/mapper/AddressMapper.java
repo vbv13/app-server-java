@@ -1,8 +1,13 @@
 package pl.jaszczomb.appserverside.mapper;
 
 import org.springframework.stereotype.Component;
+import pl.jaszczomb.appserverside.collection.Image;
 import pl.jaszczomb.appserverside.dto.AddressDto;
 import pl.jaszczomb.appserverside.collection.Address;
+import pl.jaszczomb.appserverside.dto.ImageDto;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class AddressMapper {
@@ -15,5 +20,9 @@ public class AddressMapper {
         return new Address();
     }
 
-
+    public List<AddressDto> mapToAddressDtoList(List<Address> addresses) {
+        return addresses.stream()
+                .map(this::mapToAddressDto)
+                .collect(Collectors.toList());
+    }
 }

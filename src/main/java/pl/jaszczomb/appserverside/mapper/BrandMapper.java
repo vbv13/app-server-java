@@ -20,7 +20,7 @@ public class BrandMapper {
 
     public List<BrandDto> mapToBrandDtoList(List<Brand> brands) {
         return brands.stream()
-                .map(this::mapToBrandDto)       //wskazanie referencji do metody mapToDietDto
+                .map(this::mapToBrandDto)       //wskazanie referencji do metody mapToBrandDto
                 .collect(Collectors.toList());   //tworzy kolekcję w postaci listy
     }
 }
