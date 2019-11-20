@@ -18,27 +18,16 @@ import pl.jaszczomb.appserverside.service.SortService;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("product")
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
-
-    @Autowired
-    private ProductMapper productMapper;
-
-    @Autowired
-    private SortService sortService;
-
-    @Autowired
-    private SortMapper sortMapper;
-
-    @Autowired
-    private BrandService brandService;
-
-    @Autowired
-    private BrandMapper brandMapper;
+    @Autowired private ProductService productService;
+    @Autowired private ProductMapper productMapper;
+    @Autowired private SortService sortService;
+    @Autowired private SortMapper sortMapper;
+    @Autowired private BrandService brandService;
+    @Autowired private BrandMapper brandMapper;
 
     @GetMapping("shop")
     public List<ProductDto> showProducts(@RequestBody ProductFilterDto filterDto) {

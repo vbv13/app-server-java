@@ -4,35 +4,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.jaszczomb.appserverside.collection.User;
+import pl.jaszczomb.appserverside.dto.UserDto;
+import pl.jaszczomb.appserverside.mapper.UserMapper;
 import pl.jaszczomb.appserverside.repository.UserRepository;
+import pl.jaszczomb.appserverside.service.UserService;
 
-@Controller
+@RestController
 @RequestMapping("users")
 public class UserController {
 
-    @Autowired
-    UserRepository userRepository;
-
-//    @GetMapping("auth")
-//    public boolean authorise(Req req) {
-//        return true;
-//    }
+    @Autowired private UserService userService;
+    @Autowired private UserMapper userMapper;
 
     @PostMapping
-    public void createUser(@RequestBody User user) {
-        userRepository.save(user);
+    public void createUser(@RequestBody UserDto userDto) {
+        userService.saveUser(userMapper.mapToUser(userDto));
     }
 
-//    @PostMapping
-//    public boolean loginUser(User user) {
-//        return true;
-//    }
-//
-//    @GetMapping
-//    public boolean logoutUser(User user) {
-//        return true;
-//    }
-//
+    @PutMapping
+    public UserDto updateUser(@RequestBody UserDto userDto) {
+        return userMapper.mapToUserDto(userService.saveUser(userMapper.mapToUser(userDto)));
+    }
 //    @PostMapping
 //    public void uploadImage(){
 //
@@ -56,11 +48,7 @@ public class UserController {
 //    @PostMapping
 //    public void successBuy() {
 //
-//    }
 
-    @PutMapping
-    public User updateUser(@RequestBody User user) {
-        return userRepository.save(user);
-    }
+//    }
 }
 
