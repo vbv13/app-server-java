@@ -1,15 +1,17 @@
 package pl.jaszczomb.appserverside.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.jaszczomb.appserverside.collection.Product;
+import pl.jaszczomb.appserverside.dto.BrandDto;
 import pl.jaszczomb.appserverside.dto.ProductDto;
+import pl.jaszczomb.appserverside.dto.SortDto;
 import pl.jaszczomb.appserverside.dto.temp.ProductFilterDto;
+import pl.jaszczomb.appserverside.mapper.BrandMapper;
 import pl.jaszczomb.appserverside.mapper.ProductMapper;
+import pl.jaszczomb.appserverside.mapper.SortMapper;
 import pl.jaszczomb.appserverside.service.ProductService;
 
 import java.util.List;
@@ -24,6 +26,18 @@ public class ProductController {
     @Autowired
     private ProductMapper productMapper;
 
+    @Autowired
+    private SortService sortService;
+
+    @Autowired
+    private SortMapper sortMapper;
+
+    @Autowired
+    private BrandService brandService;
+
+    @Autowired
+    private BrandMapper brandMapper;
+
     @GetMapping("shop")
     public List<ProductDto> showProducts(@RequestBody ProductFilterDto filterDto) {
         return productMapper.mapToProductDtoList(productService.getProducts(filterDto));
@@ -34,33 +48,33 @@ public class ProductController {
         return productMapper.mapToProductDtoList(productService.getRecentProducts());
     }
 
-//    @GetMapping("articles/{id}")
-//    public Product getArticle(Long id) {
-//        return resp;
-//    }
-//
-//    @PostMapping("article")
-//    public Product saveProduct(Req req) {
-//        return resp;
-//    }
-//
-//    @PostMapping("sort")
-//    public void addProcuctSort(Req req) {
-//
-//    }
-//
-//    @GetMapping("sorts")
-//    public List<Product> getBySort(Req req) {
-//        return resp;
-//    }
-//
-//    @PostMapping("brand")
-//    public void addProcuctBrand(Req req) {
-//
-//    }
-//
-//    @GetMapping("brands")
-//    public List<Product> getByBrand(Req req) {
-//        return resp;
-//    }
+    @GetMapping("articles/{id}")
+    public ProductDto getArticle(@PathVariable String id) {
+        return productMapper.mapToProductDto(productService.getProduct(id).orElseThrow());
+    }
+
+    @PostMapping("article")
+    public ProductDto saveProduct(@RequestBody ProductDto productDto) {
+        return productMapper.mapToProductDto(productService.saveProduct(productMapper.mapToProduct(productDto)));
+    }
+
+    @PostMapping("sort")
+    public void addProductSort(@RequestBody SortDto sortDto) {
+        sortService.saveSort(sortMapper.mapToSort(sortDto));
+    }
+
+    @GetMapping("sorts")
+    public List<SortDto> getSorts() {
+        return sortMapper.mapToSortDtoList(sortService.getSorts());
+    }
+
+    @PostMapping("brand")
+    public void addProductBrand(@RequestBody BrandDto brandDto) {
+        brandService.saveBrand(brandMapper.mapToBrand(brandDto));
+    }
+
+    @GetMapping("brands")
+    public List<BrandDto> getBrands() {
+        return  brandMapper.mapToBrandDtoList(brandService.getBrands());
+    }
 }
