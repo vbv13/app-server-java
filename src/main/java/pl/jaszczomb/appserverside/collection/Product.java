@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Product {
 
-    @Id private String _id;
+    @Id private String id;
 
     private int sold;
     private List<Image> image;

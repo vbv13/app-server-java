@@ -13,7 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Sort {
 
-    @Id private String _id;
+    @Id private String id;
 
     private String name;
 }

@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class User {
 
-    @Id private String _id;
+    @Id private String id;
 
     private List<Cart> cart;
     private List<History> history;

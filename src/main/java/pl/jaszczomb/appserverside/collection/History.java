@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class History {
+
     private double dateOfPurchase;
     private String name;
     private String brand;

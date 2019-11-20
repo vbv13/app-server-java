@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Payment {
 
-    @Id private String _id;
+    @Id private String id;
 
     private List<UserOnPayment> userOnPayment;
     private List<Detail> detail;
