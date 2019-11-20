@@ -1,10 +1,8 @@
 package pl.jaszczomb.appserverside.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.jaszczomb.appserverside.collection.Payment;
 import pl.jaszczomb.appserverside.dto.CartDto;
-import pl.jaszczomb.appserverside.collection.Cart;
-import pl.jaszczomb.appserverside.dto.PaymentDto;
+import pl.jaszczomb.appserverside.collection.embedded.Cart;
 
 import java.util.List;
 import java.util.stream.Collectors;

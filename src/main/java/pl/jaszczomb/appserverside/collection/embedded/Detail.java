@@ -1,6 +1,7 @@
-package pl.jaszczomb.appserverside.collection;
+package pl.jaszczomb.appserverside.collection.embedded;
 
 import lombok.*;
+import pl.jaszczomb.appserverside.collection.embedded.Address;
 
 @Data
 @Getter

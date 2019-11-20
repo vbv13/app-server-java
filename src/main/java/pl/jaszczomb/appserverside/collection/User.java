@@ -2,6 +2,8 @@ package pl.jaszczomb.appserverside.collection;
 
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
+import pl.jaszczomb.appserverside.collection.embedded.Cart;
+import pl.jaszczomb.appserverside.collection.embedded.History;
 
 import javax.persistence.Id;
 import java.util.List;

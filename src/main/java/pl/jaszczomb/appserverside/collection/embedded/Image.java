@@ -1,4 +1,4 @@
-package pl.jaszczomb.appserverside.collection;
+package pl.jaszczomb.appserverside.collection.embedded;
 
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;

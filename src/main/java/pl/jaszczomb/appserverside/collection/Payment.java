@@ -2,6 +2,9 @@ package pl.jaszczomb.appserverside.collection;
 
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
+import pl.jaszczomb.appserverside.collection.embedded.Detail;
+import pl.jaszczomb.appserverside.collection.embedded.ProductOnPayment;
+import pl.jaszczomb.appserverside.collection.embedded.UserOnPayment;
 
 import javax.persistence.Id;
 import java.util.List;

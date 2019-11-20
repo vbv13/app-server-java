@@ -1,10 +1,8 @@
 package pl.jaszczomb.appserverside.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.jaszczomb.appserverside.collection.Image;
-import pl.jaszczomb.appserverside.dto.ImageDto;
 import pl.jaszczomb.appserverside.dto.UserOnPaymentDto;
-import pl.jaszczomb.appserverside.collection.UserOnPayment;
+import pl.jaszczomb.appserverside.collection.embedded.UserOnPayment;
 
 import java.util.List;
 import java.util.stream.Collectors;

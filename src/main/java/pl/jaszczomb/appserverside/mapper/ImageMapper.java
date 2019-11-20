@@ -1,10 +1,8 @@
 package pl.jaszczomb.appserverside.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.jaszczomb.appserverside.collection.Sort;
 import pl.jaszczomb.appserverside.dto.ImageDto;
-import pl.jaszczomb.appserverside.collection.Image;
-import pl.jaszczomb.appserverside.dto.SortDto;
+import pl.jaszczomb.appserverside.collection.embedded.Image;
 
 import java.util.List;
 import java.util.stream.Collectors;

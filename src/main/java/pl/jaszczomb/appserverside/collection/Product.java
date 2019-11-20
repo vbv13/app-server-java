@@ -2,6 +2,7 @@ package pl.jaszczomb.appserverside.collection;
 
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
+import pl.jaszczomb.appserverside.collection.embedded.Image;
 
 import javax.persistence.Id;
 import java.time.LocalDateTime;

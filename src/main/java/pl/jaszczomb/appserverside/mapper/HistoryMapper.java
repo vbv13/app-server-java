@@ -1,10 +1,8 @@
 package pl.jaszczomb.appserverside.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.jaszczomb.appserverside.collection.Detail;
-import pl.jaszczomb.appserverside.dto.DetailDto;
 import pl.jaszczomb.appserverside.dto.HistoryDto;
-import pl.jaszczomb.appserverside.collection.History;
+import pl.jaszczomb.appserverside.collection.embedded.History;
 
 import java.util.List;
 import java.util.stream.Collectors;
