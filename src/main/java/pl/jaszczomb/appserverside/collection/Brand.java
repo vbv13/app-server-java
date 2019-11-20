@@ -1,9 +1,8 @@
 package pl.jaszczomb.appserverside.collection;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.persistence.Id;
 
 @Document(collection = "brands")
 @Data
@@ -13,7 +12,8 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Brand {
 
-    @Id private String _id;
+    @Id
+    private String _id;
 
     private String name;
 }

@@ -1,11 +1,11 @@
 package pl.jaszczomb.appserverside.collection;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import pl.jaszczomb.appserverside.collection.embedded.Cart;
 import pl.jaszczomb.appserverside.collection.embedded.History;
 
-import javax.persistence.Id;
 import java.util.List;
 
 @Document(collection = "users")
@@ -16,7 +16,8 @@ import java.util.List;
 @NoArgsConstructor
 public class User {
 
-    @Id private String id;
+    @Id
+    private String id;
 
     private List<Cart> cart;
     private List<History> history;

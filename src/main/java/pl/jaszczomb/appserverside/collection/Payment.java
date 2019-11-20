@@ -1,12 +1,12 @@
 package pl.jaszczomb.appserverside.collection;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import pl.jaszczomb.appserverside.collection.embedded.Detail;
 import pl.jaszczomb.appserverside.collection.embedded.ProductOnPayment;
 import pl.jaszczomb.appserverside.collection.embedded.UserOnPayment;
 
-import javax.persistence.Id;
 import java.util.List;
 
 @Document(collection = "payments")
@@ -17,7 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Payment {
 
-    @Id private String id;
+    @Id
+    private String id;
 
     private List<UserOnPayment> userOnPayment;
     private List<Detail> detail;

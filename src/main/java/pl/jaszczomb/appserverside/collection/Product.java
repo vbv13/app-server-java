@@ -1,10 +1,11 @@
 package pl.jaszczomb.appserverside.collection;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import pl.jaszczomb.appserverside.collection.embedded.Image;
 
-import javax.persistence.Id;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,7 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Product {
 
-    @Id private String id;
+    @Id
+    private String id;
 
     private int sold;
     private List<Image> image;
