@@ -12,7 +12,9 @@ import pl.jaszczomb.appserverside.dto.temp.ProductFilterDto;
 import pl.jaszczomb.appserverside.mapper.BrandMapper;
 import pl.jaszczomb.appserverside.mapper.ProductMapper;
 import pl.jaszczomb.appserverside.mapper.SortMapper;
+import pl.jaszczomb.appserverside.service.BrandService;
 import pl.jaszczomb.appserverside.service.ProductService;
+import pl.jaszczomb.appserverside.service.SortService;
 
 import java.util.List;
 

@@ -16,9 +16,9 @@ public class UserService {
 
     public List<User> getUsers() { return userRepository.findAll(); }
 
-    public Optional<User> getUser(String _id) { return userRepository.findById(_id); }
+    public Optional<User> getUser(String id) { return userRepository.findById(id); }
 
     public User saveUser(User user) { return userRepository.save(user); }
 
-    public void deleteUser(String _id) { userRepository.deleteById(_id); }
+    public void deleteUser(String id) { userRepository.deleteById(id); }
 }
