@@ -49,6 +49,10 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
+
     public Optional<Product> getProduct(String id) {
         return productRepository.findById(id);
     }

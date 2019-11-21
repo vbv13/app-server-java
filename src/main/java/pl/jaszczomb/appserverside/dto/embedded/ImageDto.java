@@ -1,4 +1,4 @@
-package pl.jaszczomb.appserverside.dto;
+package pl.jaszczomb.appserverside.dto.embedded;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserOnPaymentDto {
-    private String name;
-    private String lastname;
-    private String email;
+public class ImageDto {
+    private String public_id;
+    private String url;
 }

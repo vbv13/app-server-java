@@ -1,8 +1,8 @@
 package pl.jaszczomb.appserverside.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.jaszczomb.appserverside.dto.ProductOnPaymentDto;
 import pl.jaszczomb.appserverside.collection.embedded.ProductOnPayment;
+import pl.jaszczomb.appserverside.dto.embedded.ProductOnPaymentDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +21,12 @@ public class ProductOnPaymentMapper {
     public List<ProductOnPaymentDto> mapToProductOnPaymentDtoList(List<ProductOnPayment> productOnPayments) {
         return productOnPayments.stream()
                 .map(this::mapToProductOnPaymentDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProductOnPayment> mapToProductOnPaymentList(List<ProductOnPaymentDto> productOnPaymentDtos) {
+        return productOnPaymentDtos.stream()
+                .map(this::mapToProductOnPayment)
                 .collect(Collectors.toList());
     }
 }

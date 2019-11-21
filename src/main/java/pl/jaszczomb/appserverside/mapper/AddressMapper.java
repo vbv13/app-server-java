@@ -1,8 +1,8 @@
 package pl.jaszczomb.appserverside.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.jaszczomb.appserverside.dto.AddressDto;
 import pl.jaszczomb.appserverside.collection.embedded.Address;
+import pl.jaszczomb.appserverside.dto.embedded.AddressDto;
 
 import java.util.List;
 import java.util.stream.Collectors;

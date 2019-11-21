@@ -1,4 +1,4 @@
-package pl.jaszczomb.appserverside.dto;
+package pl.jaszczomb.appserverside.dto.embedded;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageDto {
-    private String public_id;
-    private String url;
+public class CartDto {
+    private int quantity;
+    private double date;
 }

@@ -3,18 +3,16 @@ package pl.jaszczomb.appserverside.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import pl.jaszczomb.appserverside.dto.embedded.CartDto;
+import pl.jaszczomb.appserverside.dto.embedded.HistoryDto;
 
 import java.util.List;
 
 @Getter
-@Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class UserDto {
 
-
+    private String id;
     private List<CartDto> cart;
     private List<HistoryDto> history;
     private int role;

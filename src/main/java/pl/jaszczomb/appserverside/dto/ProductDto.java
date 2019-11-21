@@ -2,17 +2,16 @@ package pl.jaszczomb.appserverside.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import pl.jaszczomb.appserverside.dto.embedded.ImageDto;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
-@Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class ProductDto {
+
+    private String id;
     private int sold;
     private List<ImageDto> image;
     private String name;
@@ -24,6 +23,6 @@ public class ProductDto {
     private SortDto sort;
     private int size;
     private boolean publish;
-    private Date createdAt;
-    private Date updatedAt;
+    private LocalDate createdAt;
+    private LocalDate updatedAt;
 }

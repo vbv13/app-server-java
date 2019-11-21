@@ -1,18 +1,17 @@
 package pl.jaszczomb.appserverside.collection;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import pl.jaszczomb.appserverside.collection.embedded.Image;
 
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Document(collection = "products")
-@Data
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
@@ -31,6 +30,6 @@ public class Product {
     private Sort sort;
     private int size;
     private boolean publish;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private LocalDate createdAt;
+    private LocalDate updatedAt;
 }
