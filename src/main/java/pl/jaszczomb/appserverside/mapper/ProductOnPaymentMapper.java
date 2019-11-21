@@ -11,11 +11,15 @@ import java.util.stream.Collectors;
 public class ProductOnPaymentMapper {
 
     public ProductOnPaymentDto mapToProductOnPaymentDto(ProductOnPayment productOnPayment) {
-        return new ProductOnPaymentDto();
+        return new ProductOnPaymentDto(productOnPayment.getDateOfPurchase(), productOnPayment.getName(),
+                productOnPayment.getBrand(), productOnPayment.getId(), productOnPayment.getPrice(),
+                productOnPayment.getQuantity(), productOnPayment.getPaymentId());
     }
 
     public ProductOnPayment mapToProductOnPayment(ProductOnPaymentDto productOnPaymentDto) {
-        return new ProductOnPayment();
+        return new ProductOnPayment(productOnPaymentDto.getDateOfPurchase(), productOnPaymentDto.getName(),
+                productOnPaymentDto.getBrand(), productOnPaymentDto.getId(), productOnPaymentDto.getPrice(),
+                productOnPaymentDto.getQuantity(), productOnPaymentDto.getPaymentId());
     }
 
     public List<ProductOnPaymentDto> mapToProductOnPaymentDtoList(List<ProductOnPayment> productOnPayments) {

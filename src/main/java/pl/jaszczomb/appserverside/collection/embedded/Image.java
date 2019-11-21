@@ -1,14 +1,14 @@
 package pl.jaszczomb.appserverside.collection.embedded;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Data
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Image {
 
-    private String public_id;
+    private String publicId;
     private String url;
 }

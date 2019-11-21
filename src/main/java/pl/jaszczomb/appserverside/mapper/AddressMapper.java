@@ -11,12 +11,15 @@ import java.util.stream.Collectors;
 public class AddressMapper {
 
     public AddressDto mapToAddressDto(Address address) {
-        return new AddressDto();
+        return new AddressDto(address.getRecipientName(), address.getLine1(), address.getLine2(),
+                address.getCity(), address.getState(), address.getPostalCode(), address.getCountryCode());
     }
 
     public Address mapToAddress(AddressDto addressDto) {
-        return new Address();
+        return new Address(addressDto.getRecipientName(), addressDto.getLine1(), addressDto.getLine2(),
+                addressDto.getCity(), addressDto.getState(), addressDto.getPostalCode(), addressDto.getCountryCode());
     }
+
 
     public List<AddressDto> mapToAddressDtoList(List<Address> addresses) {
         return addresses.stream()

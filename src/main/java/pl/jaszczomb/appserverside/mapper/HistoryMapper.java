@@ -11,11 +11,13 @@ import java.util.stream.Collectors;
 public class HistoryMapper {
 
     public HistoryDto mapToHistoryDto(History history) {
-        return new HistoryDto();
+        return new HistoryDto(history.getDateOfPurchase(), history.getName(), history.getBrand(),
+                history.getId(), history.getPrice(), history.getQuantity(), history.getPaymentId());
     }
 
     public History mapToHistory(HistoryDto historyDto) {
-        return new History();
+        return new History(historyDto.getDateOfPurchase(), historyDto.getName(), historyDto.getBrand(),
+                historyDto.getId(), historyDto.getPrice(), historyDto.getQuantity(), historyDto.getPaymentId());
     }
 
     public List<HistoryDto> mapToHistoryDtoList(List<History> histories) {

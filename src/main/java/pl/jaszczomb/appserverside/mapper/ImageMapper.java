@@ -11,11 +11,11 @@ import java.util.stream.Collectors;
 public class ImageMapper {
 
     public ImageDto mapToImageDto(Image image) {
-        return new ImageDto();
+        return new ImageDto(image.getPublicId(), image.getUrl());
     }
 
     public Image mapToImage(ImageDto imageDto) {
-        return new Image();
+        return new Image(imageDto.getPublicId(), imageDto.getUrl());
     }
 
     public List<ImageDto> mapToImageDtoList(List<Image> images) {
