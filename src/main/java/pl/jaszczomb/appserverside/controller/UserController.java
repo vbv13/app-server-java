@@ -1,12 +1,9 @@
 package pl.jaszczomb.appserverside.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pl.jaszczomb.appserverside.collection.User;
 import pl.jaszczomb.appserverside.dto.UserDto;
 import pl.jaszczomb.appserverside.mapper.UserMapper;
-import pl.jaszczomb.appserverside.repository.UserRepository;
 import pl.jaszczomb.appserverside.service.UserService;
 
 @RestController
