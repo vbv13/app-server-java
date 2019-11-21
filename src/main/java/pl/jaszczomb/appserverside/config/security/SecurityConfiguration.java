@@ -1,5 +1,6 @@
 package pl.jaszczomb.appserverside.config.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,26 +9,33 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import pl.jaszczomb.appserverside.service.UserService;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private UserService userService;
+
     @Override
     protected UserDetailsService userDetailsService() {
-        UserDetails userDetails = User.withDefaultPasswordEncoder()
-                .username("users")
-                .password("user1")
-                .roles("USERS")
+        List<UserSecurity> userSecurities = userService.getUsers().stream()
+                .map(UserSecurity::new)
+                .collect(Collectors.toList());
+        List<UserDetails> userDetailsList = new ArrayList<>();
+        for (UserSecurity us : userSecurities) {
+            UserDetails userDetails = User.withDefaultPasswordEncoder()
+                .username(us.getUserMail())
+                .password(us.getPassword())
+                .roles(us.getRole())
                 .build();
-
-        UserDetails adminDetails = User.withDefaultPasswordEncoder()
-                .username("admin")
-                .password("admin1")
-                .roles("ADMIN")
-                .build();
-
-
-        return new InMemoryUserDetailsManager();
+            userDetailsList.add(userDetails);
+        }
+        return new InMemoryUserDetailsManager(userDetailsList);
     }
 
     @Override
