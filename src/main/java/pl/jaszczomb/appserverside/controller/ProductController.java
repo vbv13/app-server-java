@@ -19,6 +19,7 @@ import pl.jaszczomb.appserverside.service.SortService;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("product")
 public class ProductController {
 

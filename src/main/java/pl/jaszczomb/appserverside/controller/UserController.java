@@ -7,6 +7,7 @@ import pl.jaszczomb.appserverside.mapper.UserMapper;
 import pl.jaszczomb.appserverside.service.UserService;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("users")
 public class UserController {
 

@@ -1,4 +1,4 @@
-package pl.jaszczomb.appserverside.config;
+package pl.jaszczomb.appserverside.config.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -26,7 +26,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .roles("ADMIN")
                 .build();
 
-        return new InMemoryUserDetailsManager(userDetails, adminDetails);
+
+        return new InMemoryUserDetailsManager();
     }
 
     @Override
