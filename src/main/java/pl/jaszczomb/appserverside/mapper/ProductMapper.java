@@ -14,16 +14,16 @@ public class ProductMapper {
     @Autowired
     private ImageMapper imageMapper;
     @Autowired
-    private BrandMapper brandMapper;
+    private BrandOnProductMapper brandOnProductMapper;
     @Autowired
-    private SortMapper sortMapper;
+    private SortOnProductMapper sortOnProductMapper;
 
     public ProductDto mapToProductDto(Product product) {
         return new ProductDto(product.getId(), product.getSold(),
                 imageMapper.mapToImageDtoList(product.getImage()), product.getName(),
                 product.getDescription(), product.getPrice(),
-                brandMapper.mapToBrandDto(product.getBrand()), product.isShipping(), product.isAvailable(),
-                sortMapper.mapToSortDto(product.getSort()), product.getSize(),
+                brandOnProductMapper.mapToBrandOnProductDto(product.getBrand()), product.isShipping(), product.isAvailable(),   //??getBrandOnProduct
+                sortOnProductMapper.mapToSortOnProductDto(product.getSort()), product.getSize(),    //?getSortOnProduct()
                 product.isPublish(), product.getCreatedAt(), product.getUpdatedAt());
     }
 
@@ -31,8 +31,8 @@ public class ProductMapper {
         return new Product(productDto.getId(), productDto.getSold(),
                 imageMapper.mapToImageList(productDto.getImage()), productDto.getName(),
                 productDto.getDescription(), productDto.getPrice(),
-                brandMapper.mapToBrand(productDto.getBrand()), productDto.isShipping(), productDto.isAvailable(),
-                sortMapper.mapToSort(productDto.getSort()), productDto.getSize(),
+                brandOnProductMapper.mapToBrandOnProduct(productDto.getBrand()), productDto.isShipping(), productDto.isAvailable(), //?getBrandOnProduct()
+                sortOnProductMapper.mapToSortOnProduct(productDto.getSort()), productDto.getSize(), //?getSortOnProduct()
                 productDto.isPublish(), productDto.getCreatedAt(), productDto.getUpdatedAt());
     }
 
