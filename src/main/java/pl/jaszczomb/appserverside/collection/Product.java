@@ -26,10 +26,10 @@ public class Product {
     private String name;
     private String description;
     private int price;
-    private BrandOnProduct brand;
+    private String brand;
     private boolean shipping;
     private boolean available;
-    private SortOnProduct sort;
+    private String sort;
     private int size;
     private boolean publish;
     private LocalDate createdAt;
