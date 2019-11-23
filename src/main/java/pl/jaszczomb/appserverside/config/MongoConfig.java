@@ -1,14 +1,22 @@
 package pl.jaszczomb.appserverside.config;
 
-import com.mongodb.MongoClient;
-import org.springframework.context.annotation.Bean;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-public class MongoConfig {
+@EnableMongoRepositories(basePackages = {"pl.jaszczomb.appserverside.repository"})
+public class MongoConfig extends AbstractMongoClientConfiguration {
 
-    @Bean
-    public MongoClient mongo() {
-        return new MongoClient("localhost");
+    @Override
+    public MongoClient mongoClient() {
+        return MongoClients.create();
+    }
+
+    @Override
+    protected String getDatabaseName() {
+        return "b2c_app";
     }
 }

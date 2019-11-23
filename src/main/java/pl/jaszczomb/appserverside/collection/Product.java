@@ -3,9 +3,9 @@ package pl.jaszczomb.appserverside.collection;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 import pl.jaszczomb.appserverside.collection.embedded.Image;
 
 import java.time.LocalDate;
@@ -17,18 +17,16 @@ import java.util.List;
 @NoArgsConstructor
 public class Product {
 
-    @Id
+    @MongoId(FieldType.OBJECT_ID)
     private String id;
     private int sold;
     private List<Image> image;
     private String name;
     private String description;
     private int price;
-    @DBRef
     private String brand;
     private boolean shipping;
     private boolean available;
-    @DBRef
     private String sort;
     private int size;
     private boolean publish;
