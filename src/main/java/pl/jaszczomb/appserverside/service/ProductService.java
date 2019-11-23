@@ -19,26 +19,7 @@ public class ProductService {
 
     public List<Product> getProducts(ProductFilterDto dto) {
         List<Product> products = productRepository.findAll();
-        if (!dto.getBrandDtos().isEmpty()) {
-            products = products.stream()
-                    .filter(p -> dto.getBrandDtos().contains(p.getBrand()))
-                    .collect(Collectors.toList());
-        }
-        if (!dto.getSizeDtos().isEmpty()) {
-            products = products.stream()
-                    .filter(p -> dto.getSizeDtos().contains(p.getSize()))
-                    .collect(Collectors.toList());
-        }
-        if (!dto.getSortDtos().isEmpty()) {
-            products = products.stream()
-                    .filter(p -> dto.getSortDtos().contains(p.getSort()))
-                    .collect(Collectors.toList());
-        }
-        if (dto.getPriceDto() != null) {
-            products = products.stream()
-                    .filter(p -> p.getPrice() >= dto.getPriceDto().getLowerPrice() && p.getPrice() <= dto.getPriceDto().getUpperPrice())
-                    .collect(Collectors.toList());
-        }
+
         return products;
     }
 

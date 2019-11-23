@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import pl.jaszczomb.appserverside.collection.embedded.Image;
 import pl.jaszczomb.appserverside.dto.embedded.ImageDto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,14 +20,21 @@ public class ImageMapper {
     }
 
     public List<ImageDto> mapToImageDtoList(List<Image> images) {
-        return images.stream()
-                .map(this::mapToImageDto)
-                .collect(Collectors.toList());
+        if (images != null){
+            return images.stream()
+                    .map(this::mapToImageDto)
+                    .collect(Collectors.toList());
+
+        }
+        return new ArrayList<>();
     }
 
     public List<Image> mapToImageList(List<ImageDto> imageDtos) {
-        return imageDtos.stream()
-                .map(this::mapToImage)
-                .collect(Collectors.toList());
+        if (imageDtos != null) {
+            return imageDtos.stream()
+                    .map(this::mapToImage)
+                    .collect(Collectors.toList());
+        }
+        return new ArrayList<>();
     }
 }

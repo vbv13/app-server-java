@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import pl.jaszczomb.appserverside.collection.embedded.BrandOnProduct;
 import pl.jaszczomb.appserverside.collection.embedded.Image;
-import pl.jaszczomb.appserverside.collection.embedded.SortOnProduct;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,15 +19,16 @@ public class Product {
 
     @Id
     private String id;
-
     private int sold;
     private List<Image> image;
     private String name;
     private String description;
     private int price;
+    @DBRef
     private String brand;
     private boolean shipping;
     private boolean available;
+    @DBRef
     private String sort;
     private int size;
     private boolean publish;

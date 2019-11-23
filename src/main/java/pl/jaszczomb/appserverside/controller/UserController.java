@@ -6,6 +6,8 @@ import pl.jaszczomb.appserverside.dto.UserDto;
 import pl.jaszczomb.appserverside.mapper.UserMapper;
 import pl.jaszczomb.appserverside.service.UserService;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("users")
@@ -17,6 +19,11 @@ public class UserController {
     @PostMapping
     public void createUser(@RequestBody UserDto userDto) {
         userService.saveUser(userMapper.mapToUser(userDto));
+    }
+
+    @GetMapping
+    public List<UserDto> getUsers() {
+        return userMapper.mapToUserDtoList(userService.getUsers());
     }
 
     @PutMapping
