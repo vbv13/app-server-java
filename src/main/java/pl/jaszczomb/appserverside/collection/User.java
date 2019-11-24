@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import pl.jaszczomb.appserverside.collection.embedded.Cart;
 import pl.jaszczomb.appserverside.collection.embedded.History;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class User {
 
     @Id
     private String id;
+    private List<Cart> cart;
     private List<History> history;
     private int role;
     private String email;

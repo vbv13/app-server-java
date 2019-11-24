@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @AllArgsConstructor
-public class UserInfoDto {
+public class UserInfoDto<CardDto> {
 
     private boolean isAdmin;
     private boolean isAuth;
