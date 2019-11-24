@@ -12,16 +12,20 @@ import java.util.stream.Collectors;
 public class UserMapper {
 
     @Autowired
+    private CartMapper cartMapper;
+    @Autowired
     private HistoryMapper historyMapper;
 
     public UserDto mapToUserDto(User user) {
-        return new UserDto(user.getId(), historyMapper.mapToHistoryDtoList(user.getHistory()), user.getRole(),
-                user.getEmail(), user.getPassword(), user.getName(), user.getLastname(), user.getToken());
+        return new UserDto(user.getId(), cartMapper.mapToCartDtoList(user.getCart()),
+                historyMapper.mapToHistoryDtoList(user.getHistory()), user.getRole(), user.getEmail(),
+                user.getPassword(), user.getName(), user.getLastname(), user.getToken());
     }
 
     public User mapToUser(UserDto userDto) {
-        return new User(userDto.getId(), historyMapper.mapToHistoryList(userDto.getHistory()), userDto.getRole(),
-                userDto.getEmail(), userDto.getPassword(), userDto.getName(), userDto.getLastname(), userDto.getToken());
+        return new User(userDto.getId(), cartMapper.mapToCartList(userDto.getCart()),
+                historyMapper.mapToHistoryList(userDto.getHistory()), userDto.getRole(), userDto.getEmail(),
+                userDto.getPassword(), userDto.getName(), userDto.getLastname(), userDto.getToken());
     }
 
     public List<UserDto> mapToUserDtoList(List<User> users) {
