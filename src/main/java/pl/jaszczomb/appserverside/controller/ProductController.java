@@ -2,6 +2,7 @@ package pl.jaszczomb.appserverside.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pl.jaszczomb.appserverside.collection.Product;
 import pl.jaszczomb.appserverside.dto.BrandDto;
 import pl.jaszczomb.appserverside.dto.ProductDto;
 import pl.jaszczomb.appserverside.dto.SortDto;
@@ -36,10 +37,15 @@ public class ProductController {
     public List<ProductDto> getRecentSoldProducts() {
         return productMapper.mapToProductDtoList(productService.getRecentProducts());
     }
+//
+//    @GetMapping("all")
+//    public List<ProductDto> getAllProducts() {
+//        return productMapper.mapToProductDtoList(productService.getAllProducts());
+//    }
 
     @GetMapping("all")
-    public List<ProductDto> getAllProducts() {
-        return productMapper.mapToProductDtoList(productService.getAllProducts());
+    public List<Product> getAllProducts() {
+        return productService.getAllProducts();
     }
 
     @GetMapping("articles/{id}")
