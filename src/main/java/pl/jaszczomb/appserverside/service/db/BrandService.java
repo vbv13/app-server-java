@@ -1,9 +1,8 @@
-package pl.jaszczomb.appserverside.service;
+package pl.jaszczomb.appserverside.service.db;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.jaszczomb.appserverside.collection.Brand;
-import pl.jaszczomb.appserverside.collection.User;
 import pl.jaszczomb.appserverside.repository.BrandRepository;
 
 import java.util.List;

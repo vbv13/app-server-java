@@ -1,24 +1,19 @@
 package pl.jaszczomb.appserverside.config.security;
 
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import pl.jaszczomb.appserverside.collection.User;
-import pl.jaszczomb.appserverside.service.BrandService;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-class UserDetailsImpl implements UserDetails {
+public class UserDetailsImpl implements UserDetails {
 
     private User user;
-
-    @Autowired
-    private BrandService brandService;
 
     public UserDetailsImpl(User user) {
         this.user = user;

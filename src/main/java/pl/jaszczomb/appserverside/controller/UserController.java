@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.jaszczomb.appserverside.dto.UserDto;
 import pl.jaszczomb.appserverside.mapper.UserMapper;
-import pl.jaszczomb.appserverside.service.UserService;
+import pl.jaszczomb.appserverside.service.db.UserService;
 
 import java.util.List;
 
