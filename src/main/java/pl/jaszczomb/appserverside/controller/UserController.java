@@ -16,7 +16,7 @@ public class UserController {
     @Autowired private UserService userService;
     @Autowired private UserMapper userMapper;
 
-    @PostMapping
+    @PostMapping("register")
     public void createUser(@RequestBody UserDto userDto) {
         userService.saveUser(userMapper.mapToUser(userDto));
     }
@@ -30,30 +30,30 @@ public class UserController {
     public UserDto updateUser(@RequestBody UserDto userDto) {
         return userMapper.mapToUserDto(userService.saveUser(userMapper.mapToUser(userDto)));
     }
-//    @PostMapping
-//    public void uploadImage(){
-//
-//    }
-//
-//    @PostMapping
-//    public void removeImage(){
-//
-//    }
-//
-//    @PostMapping
-//    public void addToCart() {
-//
-//    }
-//
-//    @GetMapping
-//    public void removeFromCart() {
-//
-//    }
-//
-//    @PostMapping
-//    public void successBuy() {
-//
+    @PostMapping("uploadimage")
+    public void uploadImage(){
 
-//    }
+    }
+
+    @PostMapping("removeimage")
+    public void removeImage(){
+
+    }
+
+    @PostMapping("addToCart")
+    public void addToCart() {
+
+    }
+
+    @GetMapping("removeFromCart")
+    public void removeFromCart() {
+
+    }
+
+    @PostMapping("successBuy")
+    public void successBuy() {
+
+
+    }
 }
 

@@ -20,7 +20,7 @@ public class User {
     private String id;
     private List<Cart> cart;
     private List<History> history;
-    private int role;
+    private String role;
     private String email;
     private String password;
     private String name;

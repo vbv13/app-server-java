@@ -27,7 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .build();
 //            userDetailsList.add(userDetails);
 //        }
-//        return new InMemoryUserDetailsManager(userDetailsList);
+//        return new UserSecurity(userDetailsList);
 //    }
 
     @Override
@@ -45,9 +45,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers(HttpMethod.GET, "product.brands").hasRole("ADMIN")
 //                .and()
 //                .formLogin()
-//                .loginPage("/login.html")
+//                .loginPage("/users/login")
 //                .loginProcessingUrl("/perform_login")
-//                .defaultSuccessUrl("/homepage.html", true)
+//                .defaultSuccessUrl("/user/dashboard", true)
 //                .failureUrl("/login.html?error=true")
 //                .and()
 //                .logout()
