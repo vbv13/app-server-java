@@ -17,7 +17,7 @@ public class UserDto {
     private String id;
     private List<CartDto> cart;
     private List<HistoryDto> history;
-    private int role;
+    private String role;
     private String email;
     private String password;
     private String name;
