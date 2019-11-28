@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.jaszczomb.appserverside.service.UserDetailsServiceImpl;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
@@ -45,7 +45,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().httpBasic()
                 .and().formLogin()
-                .loginPage("/registration_login").permitAll();
+                .loginPage("/register_login").permitAll()
+                .loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("/user/dashboard", true)
+                .failureUrl("/login.html?error=true")
+                .and()
+                .logout()
+                .logoutUrl("/")
+                .deleteCookies("JSESSIONID");;
+
     }
 
 }
