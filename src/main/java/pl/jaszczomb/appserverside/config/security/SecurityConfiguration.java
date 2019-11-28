@@ -2,6 +2,7 @@ package pl.jaszczomb.appserverside.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -41,8 +42,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .anyRequest().authenticated()
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "product/all").permitAll()
+                .antMatchers(HttpMethod.GET, "product/shop").permitAll()
+                .antMatchers(HttpMethod.GET, "product/articles").permitAll()
+                .antMatchers(HttpMethod.GET, "product/articles/**").permitAll()
+                .antMatchers(HttpMethod.GET, "product/sort").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "product/sorts").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "product.brand").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, "product.brands").hasRole("ADMIN")
+//        http.authorizeRequests()
+//                .anyRequest().authenticated()
                 .and().httpBasic()
                 .and().formLogin()
                 .loginPage("/register_login").permitAll()
