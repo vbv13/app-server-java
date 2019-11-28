@@ -16,7 +16,7 @@ public class UserInfoDto {
     private String email;
     private String name;
     private String lastname;
-    private int role;
+    private String role;
     private List<CartDto> cart;
     private List<HistoryDto> history;
 }
