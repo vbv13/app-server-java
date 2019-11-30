@@ -53,6 +53,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "product/sorts").permitAll()
                 .antMatchers(HttpMethod.POST, "product/brand").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "product/brands").permitAll()
+                .antMatchers(HttpMethod.POST, "users/register").permitAll()
+                .antMatchers(HttpMethod.POST, "users/login").permitAll()
+                .antMatchers(HttpMethod.POST, "users/uploadimage").permitAll()
+                .antMatchers(HttpMethod.POST, "users/removeimage").permitAll()
+                .antMatchers(HttpMethod.POST, "users/addToCart").permitAll()
+                .antMatchers(HttpMethod.GET, "users/removeFromCart").permitAll()
+                .antMatchers(HttpMethod.POST, "users/successBuy").permitAll()
 //        http.authorizeRequests()
 //                .anyRequest().authenticated()
                 .and().httpBasic()
@@ -63,7 +70,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login.html?error=true")
                 .and()
                 .logout()
-                .logoutUrl("/")
+                .logoutUrl("users/logout")
                 .deleteCookies("JSESSIONID");;
 
     }
