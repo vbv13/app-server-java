@@ -55,7 +55,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "product/brands").permitAll()
                 .antMatchers(HttpMethod.POST, "users/register").permitAll()
                 .antMatchers(HttpMethod.POST, "users/login").permitAll()
-                .antMatchers(HttpMethod.POST, "users/logout").permitAll()
                 .antMatchers(HttpMethod.POST, "users/uploadimage").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "users/removeimage").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "users/addToCart").hasRole("USER")
@@ -70,7 +69,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/user/dashboard", true)
                 .failureUrl("/login.html?error=true")
                 .and()
-                .logout()
+                .logout().permitAll()
                 .logoutUrl("users/logout")
                 .deleteCookies("JSESSIONID");;
 
