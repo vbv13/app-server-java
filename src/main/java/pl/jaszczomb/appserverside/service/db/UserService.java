@@ -18,8 +18,12 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> getUser(String id) {
+    public Optional<User> getUserById(String id) {
         return userRepository.findById(id);
+    }
+
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
     public User saveUser(User user) {
