@@ -11,7 +11,6 @@ import pl.jaszczomb.appserverside.dto.temp.CredentialDto;
 import pl.jaszczomb.appserverside.mapper.ImageMapper;
 import pl.jaszczomb.appserverside.mapper.ProductMapper;
 import pl.jaszczomb.appserverside.mapper.UserMapper;
-import pl.jaszczomb.appserverside.service.db.CartService;
 import pl.jaszczomb.appserverside.service.db.ProductService;
 import pl.jaszczomb.appserverside.service.db.UserService;
 
@@ -30,7 +29,6 @@ public class UserController {
     @Autowired private ProductService productService;
     @Autowired private ProductMapper productMapper;
     @Autowired private ImageMapper imageMapper;
-    @Autowired private CartService cartService;
 
     @PostMapping("register")
     public void createUser(@RequestBody UserDto userDto) {

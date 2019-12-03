@@ -15,7 +15,7 @@ import java.util.List;
 public class UserDto {
 
     private String id;
-    private List<CartDto> cart;
+    private List<ProductDto> cart;
     private List<HistoryDto> history;
     private String role;
     private String email;
