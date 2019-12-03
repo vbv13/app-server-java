@@ -4,12 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class History {
 
-    private double dateOfPurchase;
+    private LocalDate dateOfPurchase;
     private String name;
     private String brand;
     private String id;

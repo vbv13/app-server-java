@@ -2,9 +2,9 @@ package pl.jaszczomb.appserverside.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import pl.jaszczomb.appserverside.collection.Product;
 import pl.jaszczomb.appserverside.collection.User;
+import pl.jaszczomb.appserverside.collection.embedded.History;
 import pl.jaszczomb.appserverside.dto.ProductDto;
 import pl.jaszczomb.appserverside.dto.UserDto;
 import pl.jaszczomb.appserverside.dto.temp.CredentialDto;
@@ -15,7 +15,10 @@ import pl.jaszczomb.appserverside.service.db.CartService;
 import pl.jaszczomb.appserverside.service.db.ProductService;
 import pl.jaszczomb.appserverside.service.db.UserService;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin("*")
@@ -65,28 +68,38 @@ public class UserController {
     }
 
     @GetMapping("/shoppingCart")
-    public ModelAndView shoppingCart() {
-        ModelAndView modelAndView = new ModelAndView("/shoppingCart");
-        modelAndView.addObject("products", cartService.getProductsInCart());
-        return modelAndView;
+    public List<ProductDto> shoppingCart(@RequestBody UserDto userDto) {
+        User user = userService.getUserById(userDto.getId()).orElseThrow();
+        return productMapper.mapToProductDtoList(user.getCart());
     }
 
     @PostMapping("addToCart/{productId}")
-    public ModelAndView addToCart(@PathVariable("productId") String productId) {
-        productService.getProduct(productId).ifPresent(cartService::addProduct);
-        return shoppingCart();
+    public void addToCart(@PathVariable String productId, @RequestBody UserDto userDto) {
+        User user = userService.getUserById(userDto.getId()).orElseThrow();
+        Optional<Product> productOpt = productService.getProduct(productId);
+        productOpt.ifPresent(product -> user.getCart().add(product));
+        userService.saveUser(user);
     }
 
     @PostMapping("removeFromCart/{productId}")
-    public ModelAndView removeFromCart(@PathVariable("productId") String productId) {
-        productService.getProduct(productId).ifPresent((cartService::removeProduct));
-        return shoppingCart();
+    public void removeFromCart(@PathVariable String productId, @RequestBody UserDto userDto) {
+        User user = userService.getUserById(userDto.getId()).orElseThrow();
+        Optional<Product> productOpt = productService.getProduct(productId);
+        productOpt.ifPresent(product -> user.getCart().remove(product));
+        userService.saveUser(user);
     }
 
     @PostMapping("successBuy")
-    public void successBuy() {
-
-
+    public void successBuy(@RequestBody UserDto userDto) {
+        User user = userService.getUserById(userDto.getId()).orElseThrow();
+        String paymentId = UUID.randomUUID().toString();
+        List<Product> cart = user.getCart();
+        for (Product product : cart) {
+            History history = new History(LocalDate.now(), product.getName(), product.getBrand(), product.getId(),
+                    product.getPrice(), 1, paymentId);
+            user.getHistory().add(history);
+        }
+        userService.saveUser(user);
     }
 }
 

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import pl.jaszczomb.appserverside.collection.embedded.History;
 import pl.jaszczomb.appserverside.dto.embedded.HistoryDto;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,12 +12,12 @@ import java.util.stream.Collectors;
 public class HistoryMapper {
 
     public HistoryDto mapToHistoryDto(History history) {
-        return new HistoryDto(history.getDateOfPurchase(), history.getName(), history.getBrand(),
+        return new HistoryDto(history.getDateOfPurchase().toEpochDay(), history.getName(), history.getBrand(),
                 history.getId(), history.getPrice(), history.getQuantity(), history.getPaymentId());
     }
 
     public History mapToHistory(HistoryDto historyDto) {
-        return new History(historyDto.getDateOfPurchase(), historyDto.getName(), historyDto.getBrand(),
+        return new History(LocalDate.ofEpochDay((long) historyDto.getDateOfPurchase()), historyDto.getName(), historyDto.getBrand(),
                 historyDto.getId(), historyDto.getPrice(), historyDto.getQuantity(), historyDto.getPaymentId());
     }
 
