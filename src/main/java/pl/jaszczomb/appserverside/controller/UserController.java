@@ -2,14 +2,17 @@ package pl.jaszczomb.appserverside.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import pl.jaszczomb.appserverside.collection.Product;
 import pl.jaszczomb.appserverside.collection.User;
 import pl.jaszczomb.appserverside.dto.ProductDto;
 import pl.jaszczomb.appserverside.dto.UserDto;
 import pl.jaszczomb.appserverside.dto.temp.CredentialDto;
+import pl.jaszczomb.appserverside.mapper.CartMapper;
 import pl.jaszczomb.appserverside.mapper.ImageMapper;
 import pl.jaszczomb.appserverside.mapper.ProductMapper;
 import pl.jaszczomb.appserverside.mapper.UserMapper;
+import pl.jaszczomb.appserverside.service.db.CartService;
 import pl.jaszczomb.appserverside.service.db.ProductService;
 import pl.jaszczomb.appserverside.service.db.UserService;
 
@@ -25,6 +28,7 @@ public class UserController {
     @Autowired private ProductService productService;
     @Autowired private ProductMapper productMapper;
     @Autowired private ImageMapper imageMapper;
+    @Autowired private CartService cartService;
 
     @PostMapping("register")
     public void createUser(@RequestBody UserDto userDto) {
@@ -47,10 +51,6 @@ public class UserController {
         return userMapper.mapToUserDto(userService.saveUser(userMapper.mapToUser(userDto)));
     }
 
-    /*Przeniósł bym do Product kontrolera,
-    *
-    * chyba że ma dotyczyć avatara na koncie?*/
-
     @PutMapping("uploadimage")
     public ProductDto uploadImage(@RequestBody ProductDto productDto) throws Exception {
         Product product = productService.getProduct(productDto.getId()).orElseThrow(Exception::new);
@@ -65,14 +65,23 @@ public class UserController {
         productService.saveProduct(product);
     }
 
-    @PostMapping("addToCart")
-    public void addToCart() {
-
+    @GetMapping("/shoppingCart")
+    public ModelAndView shoppingCart() {
+        ModelAndView modelAndView = new ModelAndView("/shoppingCart");
+        modelAndView.addObject("products", cartService.getProductsInCart());
+        return modelAndView;
     }
 
-    @GetMapping("removeFromCart")
-    public void removeFromCart() {
+    @PostMapping("addToCart/{productId}")
+    public ModelAndView addToCart(@PathVariable("productId") String productId) {
+        productService.getProduct(productId).ifPresent(cartService::addProduct);
+        return shoppingCart();
+    }
 
+    @GetMapping("removeFromCart/{productId}")
+    public ModelAndView removeFromCart(@PathVariable("productId") String productId) {
+        productService.getProduct(productId).ifPresent((cartService::removeProduct));
+        return shoppingCart();
     }
 
     @PostMapping("successBuy")
