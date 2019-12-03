@@ -28,14 +28,14 @@ public class ProductMapper {
         return new ProductDto(product.getId(), product.getSold(), imageMapper.mapToImageDtoList(product.getImage()),
                 product.getName(), product.getDescription(), product.getPrice(), product.getBrand(),
                 product.isShipping(), product.isAvailable(), product.getSort(), product.getSize(), product.isPublish(),
-                product.getCreatedAt(), product.getUpdatedAt());
+                product.getCreatedAt(), product.getUpdatedAt(), product.getQuantity());
     }
 
     public Product mapToProduct(ProductDto productDto) {
         return new Product(productDto.getId(), productDto.getSold(), imageMapper.mapToImageList(productDto.getImage()),
                 productDto.getName(), productDto.getDescription(), productDto.getPrice(), productDto.getBrand(),
                 productDto.isShipping(), productDto.isAvailable(), productDto.getSort(), productDto.getSize(),
-                productDto.isPublish(), productDto.getCreatedAt(), productDto.getUpdatedAt());
+                productDto.isPublish(), productDto.getCreatedAt(), productDto.getUpdatedAt(), productDto.getQuantity());
     }
 
     public List<ProductDto> mapToProductDtoList(List<Product> products) {

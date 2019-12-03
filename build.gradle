@@ -22,6 +22,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	compile 'org.springframework.boot:spring-boot-starter-security:2.2.1.RELEASE'
+	compile group: 'com.cloudinary', name: 'cloudinary', version: '1.0.2'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'

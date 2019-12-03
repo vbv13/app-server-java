@@ -29,4 +29,5 @@ public class ProductDto {
     private boolean publish;
     private LocalDate createdAt;
     private LocalDate updatedAt;
+    private int quantity;
 }

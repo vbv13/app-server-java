@@ -1,6 +1,7 @@
 package pl.jaszczomb.appserverside.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 import pl.jaszczomb.appserverside.collection.Product;
 import pl.jaszczomb.appserverside.collection.User;
@@ -94,7 +95,7 @@ public class UserController {
         List<Product> cart = user.getCart();
         for (Product product : cart) {
             History history = new History(LocalDate.now(), product.getName(), product.getBrand(), product.getId(),
-                    product.getPrice(), 1, paymentId);
+                    product.getPrice(), product.getQuantity(), paymentId);
             user.getHistory().add(history);
         }
         userService.saveUser(user);
