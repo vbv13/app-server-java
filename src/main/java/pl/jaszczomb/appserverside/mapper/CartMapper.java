@@ -1,9 +1,7 @@
 package pl.jaszczomb.appserverside.mapper;
 
 import org.springframework.stereotype.Component;
-import pl.jaszczomb.appserverside.collection.Product;
 import pl.jaszczomb.appserverside.collection.embedded.Cart;
-import pl.jaszczomb.appserverside.dto.ProductDto;
 import pl.jaszczomb.appserverside.dto.embedded.CartDto;
 
 import java.util.List;
@@ -20,13 +18,13 @@ public class CartMapper {
         return new Cart(cartDto.getId(), cartDto.getQuantity(), cartDto.getDate());
     }
 
-    public List<ProductDto> mapToCartDtoList(List<Product> carts) {
+    public List<CartDto> mapToCartDtoList(List<Cart> carts) {
         return carts.stream()
                 .map(this::mapToCartDto)
                 .collect(Collectors.toList());
     }
 
-    public List<Product> mapToCartList(List<ProductDto> cartDtos) {
+    public List<Cart> mapToCartList(List<CartDto> cartDtos) {
         return cartDtos.stream()
                 .map(this::mapToCart)
                 .collect(Collectors.toList());
