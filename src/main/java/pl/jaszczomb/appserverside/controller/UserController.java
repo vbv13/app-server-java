@@ -8,7 +8,6 @@ import pl.jaszczomb.appserverside.collection.User;
 import pl.jaszczomb.appserverside.dto.ProductDto;
 import pl.jaszczomb.appserverside.dto.UserDto;
 import pl.jaszczomb.appserverside.dto.temp.CredentialDto;
-import pl.jaszczomb.appserverside.mapper.CartMapper;
 import pl.jaszczomb.appserverside.mapper.ImageMapper;
 import pl.jaszczomb.appserverside.mapper.ProductMapper;
 import pl.jaszczomb.appserverside.mapper.UserMapper;
@@ -78,7 +77,7 @@ public class UserController {
         return shoppingCart();
     }
 
-    @GetMapping("removeFromCart/{productId}")
+    @PostMapping("removeFromCart/{productId}")
     public ModelAndView removeFromCart(@PathVariable("productId") String productId) {
         productService.getProduct(productId).ifPresent((cartService::removeProduct));
         return shoppingCart();

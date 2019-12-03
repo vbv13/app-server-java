@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.jaszczomb.appserverside.service.UserDetailsServiceImpl;
 
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity//(debug = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
@@ -55,11 +55,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "product/brands").permitAll()
                 .antMatchers(HttpMethod.POST, "users/register").permitAll()
                 .antMatchers(HttpMethod.POST, "users/login").permitAll()
-                .antMatchers(HttpMethod.POST, "users/uploadimage").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "users/uploadimage").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "users/removeimage").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "users/shoppingCart").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "users/addToCart/{productId}").hasRole("USER")
-                .antMatchers(HttpMethod.GET, "users/removeFromCart/{productId}").hasRole("USER")
+                .antMatchers(HttpMethod.POST, "users/removeFromCart/{productId}").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "users/successBuy").hasRole("USER")
 //        http.authorizeRequests()
 //                .anyRequest().authenticated()
