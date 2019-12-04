@@ -3,6 +3,7 @@ package pl.jaszczomb.appserverside.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
+import pl.jaszczomb.appserverside.collection.Payment;
 import pl.jaszczomb.appserverside.collection.Product;
 import pl.jaszczomb.appserverside.collection.User;
 import pl.jaszczomb.appserverside.collection.embedded.History;
@@ -52,19 +53,19 @@ public class UserController {
         return userMapper.mapToUserDto(userService.saveUser(userMapper.mapToUser(userDto)));
     }
 
-    @PutMapping("uploadimage")
-    public ProductDto uploadImage(@RequestBody ProductDto productDto) throws Exception {
-        Product product = productService.getProduct(productDto.getId()).orElseThrow(Exception::new);
-        product.getImage().addAll(imageMapper.mapToImageList(productDto.getImage()));
-        return productMapper.mapToProductDto(productService.saveProduct(product));
-    }
-
-    @PostMapping("removeimage")
-    public void removeImage(@RequestBody ProductDto productDto) throws Exception {
-        Product product = productService.getProduct(productDto.getId()).orElseThrow(Exception::new);
-        product.getImage().removeAll(imageMapper.mapToImageList((productDto.getImage())));
-        productService.saveProduct(product);
-    }
+//    @PutMapping("uploadimage")
+//    public ProductDto uploadImage(@RequestBody ProductDto productDto) throws Exception {
+//        Product product = productService.getProduct(productDto.getId()).orElseThrow(Exception::new);
+//        product.getImage().addAll(imageMapper.mapToImageList(productDto.getImage()));
+//        return productMapper.mapToProductDto(productService.saveProduct(product));
+//    }
+//
+//    @PostMapping("removeimage")
+//    public void removeImage(@RequestBody ProductDto productDto) throws Exception {
+//        Product product = productService.getProduct(productDto.getId()).orElseThrow(Exception::new);
+//        product.getImage().removeAll(imageMapper.mapToImageList((productDto.getImage())));
+//        productService.saveProduct(product);
+//    }
 
     @GetMapping("/shoppingCart")
     public List<ProductDto> shoppingCart(@RequestBody UserDto userDto) {
