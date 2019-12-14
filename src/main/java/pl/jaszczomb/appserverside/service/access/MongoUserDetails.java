@@ -1,43 +1,38 @@
-package pl.jaszczomb.appserverside.config.security;
+package pl.jaszczomb.appserverside.service.access;
 
-import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import pl.jaszczomb.appserverside.collection.User;
 
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Collections;
 
-@Getter
-public class UserDetailsImpl implements UserDetails {
+public class MongoUserDetails implements UserDetails {
 
-    private User user;
+    private String email;
+    private String password;
+    private String role;
 
-    public UserDetailsImpl(User user) {
-        this.user = user;
+    public MongoUserDetails(User user) {
+        email = user.getEmail();
+        password = user.getPassword();
+        role = user.getRole();
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<GrantedAuthority> authorities = new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority(user.getRole()));
-        return authorities;
-    }
-
-    public String getId() {
-        return user.getId();
+        return Collections.singletonList(new SimpleGrantedAuthority(role));
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return user.getEmail();
+        return email;
     }
 
     @Override

@@ -12,18 +12,18 @@ import java.util.stream.Collectors;
 public class UserMapper {
 
     @Autowired
-    private HistoryMapper historyMapper;
+    private CartMapper cartMapper;
     @Autowired
-    private ProductMapper productMapper;
+    private HistoryMapper historyMapper;
 
     public UserDto mapToUserDto(User user) {
-        return new UserDto(user.getId(), productMapper.mapToProductDtoList(user.getCart()),
+        return new UserDto(user.getId(), cartMapper.mapToCartDtoList(user.getCart()),
                 historyMapper.mapToHistoryDtoList(user.getHistory()), user.getRole(), user.getEmail(),
                 user.getPassword(), user.getName(), user.getLastname(), user.getToken());
     }
 
     public User mapToUser(UserDto userDto) {
-        return new User(userDto.getId(), productMapper.mapToProductList(userDto.getCart()),
+        return new User(userDto.getId(), cartMapper.mapToCartList(userDto.getCart()),
                 historyMapper.mapToHistoryList(userDto.getHistory()), userDto.getRole(), userDto.getEmail(),
                 userDto.getPassword(), userDto.getName(), userDto.getLastname(), userDto.getToken());
     }

@@ -3,13 +3,11 @@ package pl.jaszczomb.appserverside.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.data.mongodb.core.mapping.Document;
 import pl.jaszczomb.appserverside.dto.embedded.ImageDto;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Document
 @Getter
 @AllArgsConstructor
 @JsonIgnoreProperties(value = "true")

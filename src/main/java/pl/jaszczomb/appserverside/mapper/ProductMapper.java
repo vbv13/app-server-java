@@ -43,10 +43,4 @@ public class ProductMapper {
                 .map(this::mapToProductDto)
                 .collect(Collectors.toList());
     }
-
-    public List<Product> mapToProductList(List<ProductDto> productDtos) {
-        return productDtos.stream()
-                .map(this::mapToProduct)
-                .collect(Collectors.toList());
-    }
 }
